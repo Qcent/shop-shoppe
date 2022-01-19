@@ -1,7 +1,20 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+import { useStoreContext } from '../../utils/GlobalState';
+import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from '../../utils/actions';
+
 const CartItem = ({ item }) => {
+
+  const [, dispatch] = useStoreContext();
+
+  const removeFromCart = item => {
+    dispatch({
+      type: REMOVE_FROM_CART,
+      _id: item._id
+    });
+  };
+
   return (
     <div className="flex-row">
       <div>
@@ -24,6 +37,7 @@ const CartItem = ({ item }) => {
           <span
             role="img"
             aria-label="trash"
+            onClick={() => removeFromCart(item)}
           >
             🗑️
           </span>
