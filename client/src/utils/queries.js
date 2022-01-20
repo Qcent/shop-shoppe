@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_CHECKOUT = gql `
-  query getCheckout($products: [ID]!) {
-    checkout(products: $products) {
+  query getCheckout($products: [ID]!, $qtys: [Int]!) {
+    checkout(products: $products, qtys: $qtys) {
       session
     }
   }

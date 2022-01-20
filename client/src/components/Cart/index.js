@@ -50,16 +50,18 @@ const Cart = () => {
 
   function submitCheckout() {
     const productIds = [];
+    const productQtys = [];
   
     state.cart.forEach((item) => {
-      //console.log(item)
+      console.log(item);
       //for (let i = 0; i < item.quantity; i++) {
         productIds.push(item._id);
+        productQtys.push(item.quantity);
      //}
     });
     
     getCheckout({
-      variables: { products: productIds }
+      variables: { products: productIds, qtys: productQtys }
     });
   }
 
