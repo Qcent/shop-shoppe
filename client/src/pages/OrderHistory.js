@@ -35,8 +35,10 @@ function OrderHistory() {
                         <p>{name}</p>
                       </Link>
                       <div>
-                        <span>${price}</span>
+                        <span>price: ${price}</span>
+                        
                       </div>
+                      <div><span>quantity: {order.quantities[index]}</span></div>
                     </div>
                   ))}
                 </div>

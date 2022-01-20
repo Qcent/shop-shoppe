@@ -31,7 +31,7 @@ const resolvers = {
                 // add price id to the line items array
                 line_items.push({
                     price: price.id,
-                    quantity: 1
+                    quantity: args.qtys[i]
                 });
             }
 
@@ -101,10 +101,10 @@ const resolvers = {
 
             return { token, user };
         },
-        addOrder: async(parent, { products }, context) => {
+        addOrder: async(parent, { products, quantities }, context) => {
             console.log(context);
             if (context.user) {
-                const order = new Order({ products });
+                const order = new Order({ products, quantities });
 
                 await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
 
